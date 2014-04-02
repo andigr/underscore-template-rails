@@ -19,7 +19,7 @@ module UnderscoreTemplateRails
     end
 
     def evaluate(scope, locals, &block)
-      %{#{variable}["#{template_name(scope)}"] = _.template("#{escape_javascript(data)}");}
+      %{window.#{variable} = #{variable} || []; #{variable}["#{template_name(scope)}"] = _.template("#{escape_javascript(data)}");}
     end
 
     private
